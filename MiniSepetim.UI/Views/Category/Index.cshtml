@@ -1,0 +1,42 @@
+﻿@model List<MiniSepetim.Entities.Dtos.CategoryDtos.CategoryDto>
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <h2 class="text-danger">Kategoriler</h2>
+            <hr />
+
+        
+        <div class="col-12 text-right">
+            <a class="btn btn-success" asp-action="Create" asp-controller="Category" >Kategori Ekle</a>
+        </div>
+          
+
+            <table class="table table-bordered success">
+
+                <tr>
+                    <th class="info">Kategori Adı</th>
+                    <th class="info">Oluşturulma Tarihi</th>
+                    <th class="info">Durumu</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.CreateDate</td>
+                        <td>@item.State</td>
+                        <td>
+                            <a asp-action="Delete" asp-controller="Category" asp-route-uniqueName="@item.UniqueName" class="btn btn-danger">Sil</a>
+                        </td>
+                        <td>
+                            
+                            <a asp-action="Update" asp-controller="Category" asp-route-categoryName="@item.Name" class="btn btn-warning">Güncelle</a>
+                        </td>
+                    </tr>
+                }
+            </table>   
+        </div>
+    </div>

@@ -1,0 +1,55 @@
+﻿@model MiniSepetim.UI.Models.BasketItem
+
+<h4>BasketItem</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="BasketAdd">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProductId" class="control-label"></label>
+                <input asp-for="ProductId" class="form-control" />
+                <span asp-validation-for="ProductId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Paths" class="control-label"></label>
+                <input asp-for="Paths" class="form-control" />
+                <span asp-validation-for="Paths" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryName" class="control-label"></label>
+                <input asp-for="CategoryName" class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SellerName" class="control-label"></label>
+                <input asp-for="SellerName" class="form-control" />
+                <span asp-validation-for="SellerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductName" class="control-label"></label>
+                <input asp-for="ProductName" class="form-control" />
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" onclick="Plus()" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+        <script>var element = document.getElementById("spt");
+                var adt = 0;
+                function Plus() {
+                    adt++;
+                    element.innerHTML +" + "+ adt;
+                }</script>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

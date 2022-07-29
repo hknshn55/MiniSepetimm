@@ -1,0 +1,62 @@
+﻿@model List<MiniSepetim.Entities.Dtos.ProductDtos.ProductPictureDto>
+
+
+
+
+<div class="container">
+    <br>
+    <h4 class="text-center"><a href="https://www.linkedin.com/in/1hakansahin/">www.MiniSepetim.com</a></h4>
+    <a><center>Ürün detaylarını görmek için incele butonuna tıklayabilirsiniz.</center></a>
+
+    @*Sıralama*@
+    <div>
+        <form method="post" asp-action="Index" asp-controller="Product">
+            <div>
+                <p><strong>Fiyata Göre Sıralama</strong></p>
+                <select class="form-control" name="shortBy">
+                    <option>Yüksek fiyata göre sırala</option>
+                    <option>Düşük fiyata göre sırala</option>
+                </select>
+                <button  class="btn btn-success">Sırala</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="row" id="ads">
+        <!-- Category Card -->
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mt-4">
+                <div class="card rounded">
+                    <div class="card-image">
+                        <img style="border-radius: 25px; height:300px; width:100%; object-fit:cover;" src="@item.Paths" alt="Alternate Text" />
+                    </div>
+                    <div class="card-image-overlay mt-4 text-center">
+                        <span class="card-detail-badge"><strong>@item.ProductName</strong></span>
+                        <span class="card-detail-badge"><mark>@item.Price.ToString("C2")</mark></span>
+
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="ad-title m-auto">
+                            <h5>@item.ProductName</h5>
+                        </div>
+                        @if (User.Identity.Name != item.SellerUserName)
+                        {
+                            if (item.Count > 0)
+                            {
+                                if (!User.IsInRole("Admin"))
+                                {
+                                  <a class="btn btn-success"  asp-action="BasketAdd" asp-controller="Product" asp-route-productId="@item.ProductId"> Sepete Ekle</a>
+                                }
+
+                            }
+                        }
+                        <a class="btn btn-info" asp-action="Detail" asp-controller="Product" asp-route-id="@item.ProductId">İncele</a>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

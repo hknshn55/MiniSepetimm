@@ -1,0 +1,42 @@
+﻿
+@model List<MiniSepetim.Entities.Concrete.Customer>
+
+
+
+<div class="container">
+    <div class="row">
+        <h2 class="text-danger">Kategoriler</h2>
+        
+        <table class="table table-bordered success">
+
+            <tr>
+                <td style="margin-left:auto">
+                    <a class="btn btn-success">Yeni Müşteri Ekle</a>
+                </td>
+            </tr>
+           
+            <tr>
+                <th class="info">Ad</th>
+                <th class="info">Soyad</th>
+                <th class="info">Telefon Numarası</th>
+                <th class="info">Adresi</th>
+                <th class="info">Durumu</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>@item.Adress</td>
+                    <td>@item.State</td>
+                    <td><a href="#" class="btn btn-block" >Sil</a></td>
+                    <td><a href="#" class="btn btn-warning">Güncelle</a></td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>

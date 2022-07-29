@@ -1,0 +1,55 @@
+﻿
+<head>
+    <link href="~/css/login.css" rel="stylesheet" />
+</head>
+<style>
+    li{
+        list-style:none;
+    }
+</style>
+<div class="container">
+    <div id="login-row" class="row justify-content-center align-items-center">
+        <div id="login-column" class="col-md-6">
+            <div class="container text-center mt-5">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="text-center" asp-validation-summary="ModelOnly"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <form method="post" asp-action="Login" asp-controller="Account">
+
+                            <h1>Giriş Yapınız</h1>
+                            <div class="form-group mt-4">
+                                <label for="Email" class="text-black">E-Posta Adresiniz</label><br>
+                                <input type="text" name="Email" id="Email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="Password" class="text-black">Parolanız<span id="gg" class="btn btn-primary" onclick="TypChange()">Göster</span></label><br>
+                                <input type="password" name="Password" id="Pwd" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-info btn-md" value="Giriş">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <script>function TypChange() {
+                            var gg = document.getElementById("gg");
+                            var element = document.getElementById("Pwd");
+                            if (element.type == 'text') {
+                                element.type = 'Password';
+                                gg.innerText = "Göster";
+                            }
+                            else {
+                                element.type = "text";
+                                gg.innerText = "Gizle";
+                            }
+                        }</script>
+
+            </div>
+        </div>
+    </div>
+</div>

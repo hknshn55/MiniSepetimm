@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MiniSepetim.Entities.Concrete.Order>
+
+@{
+    Layout = null;
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Müşteri Adı
+            </th>
+            <th>
+                Sipariş Oluşturma Tarihi
+            </th>
+            <th>
+                Durum
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.ActionLink("Güncelle", "Details", new { id = item.Id }) |
+                @*@Html.ActionLink("Sil", "Delete", new { id = item.Id })*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
